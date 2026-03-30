@@ -2,4 +2,172 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design system — L'agent IA ajoute ses CSS variables ici */
+/* ================================================
+   BALADES CATAMARAN MARTINIQUE — Design System
+   Univers: Caraïbes tropicales, turquoise, soleil doré
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Turquoise des eaux caribéennes */
+    --background: 185 45% 96%;        /* #EDF8F9 — blanc lagon clair */
+    --foreground: 200 50% 15%;        /* #0D2B33 — bleu nuit tropical */
+
+    --card: 185 40% 92%;              /* #E0F4F6 — turquoise très pâle */
+    --card-foreground: 200 50% 15%;
+
+    --popover: 185 45% 96%;
+    --popover-foreground: 200 50% 15%;
+
+    /* Turquoise vif — couleur principale */
+    --primary: 185 85% 38%;           /* #0EA5B0 — turquoise caribéen */
+    --primary-foreground: 0 0% 100%;  /* blanc nautique */
+
+    /* Doré coucher de soleil antillais */
+    --secondary: 38 90% 52%;          /* #F59E0B — doré chaud */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Sable des plages */
+    --accent: 40 55% 80%;             /* #E8D5A3 — beige sable */
+    --accent-foreground: 200 50% 15%;
+
+    /* Turquoise profond hover */
+    --muted: 185 60% 25%;             /* #186A72 — turquoise profond */
+    --muted-foreground: 0 0% 100%;
+
+    --border: 185 30% 80%;
+    --input: 185 30% 80%;
+    --ring: 185 85% 38%;
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Open Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    @apply text-foreground font-semibold;
+  }
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-sans {
+    font-family: 'Open Sans', sans-serif;
+  }
+  .font-display {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism nautique */
+  .glass {
+    background: rgba(237, 248, 249, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(14, 165, 176, 0.15);
+    box-shadow: 0 8px 32px rgba(14, 165, 176, 0.08);
+  }
+
+  .glass-card {
+    background: rgba(224, 244, 246, 0.80);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(14, 165, 176, 0.20);
+    box-shadow: 0 4px 24px rgba(14, 165, 176, 0.10);
+    transition: all 0.3s ease;
+  }
+  .glass-card:hover {
+    box-shadow: 0 12px 40px rgba(14, 165, 176, 0.18);
+    border-color: rgba(14, 165, 176, 0.35);
+  }
+
+  /* Dégradé turquoise → doré (signature caraïbes) */
+  .gradient-text {
+    background: linear-gradient(135deg, #0EA5B0 0%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Vague décorative */
+  .wave-bg {
+    background: linear-gradient(160deg, hsl(185 85% 38%) 0%, hsl(185 60% 25%) 100%);
+  }
+
+  /* Overlay sombre tropique */
+  .tropical-overlay {
+    background: linear-gradient(to bottom, rgba(13, 43, 51, 0.4) 0%, rgba(13, 43, 51, 0.6) 100%);
+  }
+
+  /* Badge catégorie nautique */
+  .badge-nautique {
+    @apply bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1 text-xs font-medium tracking-wider uppercase;
+  }
+
+  /* Animation d'entrée */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.7s ease forwards;
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animation flottement pour le hero */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* Vagues SVG animées */
+  .animate-wave {
+    animation: wave 8s linear infinite;
+  }
+  @keyframes wave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Bouton primaire */
+  .btn-primary {
+    @apply bg-primary text-white font-display font-semibold px-8 py-4 rounded-full shadow-lg;
+    @apply hover:bg-primary/85 hover:shadow-xl hover:-translate-y-1;
+    @apply transition-all duration-300;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Bouton secondaire */
+  .btn-ghost {
+    @apply border-2 border-white text-white font-display font-semibold px-8 py-4 rounded-full;
+    @apply hover:bg-white hover:text-foreground;
+    @apply transition-all duration-300;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Separateur vague */
+  .section-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #0EA5B0, #F59E0B);
+    border-radius: 2px;
+  }
+}
